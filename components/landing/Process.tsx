@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 
 const steps = [
   {
@@ -26,21 +25,8 @@ const steps = [
 ]
 
 export default function Process() {
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const els = ref.current?.querySelectorAll('.reveal')
-    if (!els) return
-    const obs = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target) } }),
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    )
-    els.forEach((el) => obs.observe(el))
-    return () => obs.disconnect()
-  }, [])
-
   return (
-    <section id="process" className="py-32" ref={ref}>
+    <section id="process" className="py-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-[380px_1fr] gap-20 items-start">
 

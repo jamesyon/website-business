@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import type { Testimonial } from '@/types'
 
 interface TestimonialsProps {
@@ -8,21 +7,8 @@ interface TestimonialsProps {
 }
 
 export default function Testimonials({ testimonials }: TestimonialsProps) {
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const els = ref.current?.querySelectorAll('.reveal')
-    if (!els) return
-    const obs = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target) } }),
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    )
-    els.forEach((el) => obs.observe(el))
-    return () => obs.disconnect()
-  }, [])
-
   return (
-    <section id="clients" className="py-32" style={{ background: '#080808' }} ref={ref}>
+    <section id="clients" className="py-32" style={{ background: '#080808' }}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-16 reveal">
           <p className="font-[var(--font-mono)] text-[10.5px] tracking-[0.14em] uppercase text-[#C9A84C] mb-4">Client Feedback</p>

@@ -16,7 +16,7 @@ export default function Footer() {
             </a>
           ))}
         </div>
-        <p className="font-[var(--font-mono)] text-[11px] text-[#2a2a2a]">
+        <p className="font-[var(--font-mono)] text-[11px] text-[#444]">
           © {new Date().getFullYear()} Forge Studio. All rights reserved.
         </p>
       </div>
