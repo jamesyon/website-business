@@ -6,7 +6,7 @@ export async function proxy(request: NextRequest) {
 
   // Skip auth check if Supabase isn't configured yet
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
   if (!supabaseUrl || !supabaseKey || supabaseUrl.startsWith('your_')) {
     return supabaseResponse
   }
