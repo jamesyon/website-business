@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, Plus_Jakarta_Sans, DM_Mono } from 'next/font/google'
 import './globals.css'
+import RevealObserver from '@/components/RevealObserver'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${cormorant.variable} ${plusJakarta.variable} ${dmMono.variable}`}>
       <body className="font-[var(--font-body)] bg-[#0A0A0A] text-[#F5F0E8] antialiased overflow-x-hidden">
+        <RevealObserver />
         {children}
       </body>
     </html>

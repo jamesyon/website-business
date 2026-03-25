@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import type { Project } from '@/types'
 
 interface WorkProps {
@@ -8,19 +7,6 @@ interface WorkProps {
 }
 
 export default function Work({ projects }: WorkProps) {
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const els = ref.current?.querySelectorAll('.reveal')
-    if (!els) return
-    const obs = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target) } }),
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    )
-    els.forEach((el) => obs.observe(el))
-    return () => obs.disconnect()
-  }, [])
-
   const placeholders = [
     'https://placehold.co/800x600/141414/333?text=',
     'https://placehold.co/800x360/1a1a1a/444?text=',
@@ -33,7 +19,7 @@ export default function Work({ projects }: WorkProps) {
   const displayed = projects.slice(0, 6)
 
   return (
-    <section id="work" className="py-32" style={{ background: '#080808' }} ref={ref}>
+    <section id="work" className="py-32" style={{ background: '#080808' }}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-16 reveal">
           <p className="font-[var(--font-mono)] text-[10.5px] tracking-[0.14em] uppercase text-[#C9A84C] mb-4">Selected Work</p>
@@ -51,7 +37,7 @@ export default function Work({ projects }: WorkProps) {
           {displayed[0] && (
             <WorkCard project={displayed[0]} imgUrl={displayed[0].image_url || placeholders[0] + encodeURIComponent(displayed[0].title)} className="reveal" aspectClass="aspect-[4/3]" />
           )}
-          <div className="grid grid-rows-2 gap-3">
+          <div className="grid grid-rows-2 gap-3 h-full">
             {displayed[1] && (
               <WorkCard project={displayed[1]} imgUrl={displayed[1].image_url || placeholders[1] + encodeURIComponent(displayed[1].title)} className="reveal reveal-d1" style={{ minHeight: '180px' }} />
             )}
